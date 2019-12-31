@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+    <div class="card mb-3 align-middle" style="max-width: 1500px;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="{{asset('picture/' ~ details.photo )}}" class="card-img" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Titre</h5>
+                    <p class="card-text">{{ details.titre }}</p>
+                    <h5 class="card-title">Categorie</h5>
+                    <p class="card-text">{{ details.category.category }}</p>
+                    <h5 class="card-title">Prix</h5>
+                    <p class="card-text">{{ details.prix }}€</p>
+                    <h5 class="card-title">Desription</h5>
+                    <p class="card-text">{{ details.description}}</p>
+                    <p class="card-text"><small class="text-muted">mise en ligne {{ details.createdAt|date('F d Y') }} à {{ details.createdAt|date("H:i") }}</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    </div>
+{% endblock %}

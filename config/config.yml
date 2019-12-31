@@ -1,0 +1,17 @@
+framework:
+  session:
+    cookie_secure: false
+
+liip_imagine:
+  filter_sets:
+
+    # name our filter set "my_fixed_filter"
+    my_fixed_filter:
+      filters:
+
+        # use and setup the "fixed" filter
+        fixed:
+
+          # set the fixed size to "120x90" pixels
+          width: 120
+          height: 90

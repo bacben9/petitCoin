@@ -1,0 +1,25 @@
+<nav class="navbar navbar-light bg-dark">
+    <form class="form-inline">
+       <h2 class="text-white mr-5"> {{ home }}</h2>
+        <a href="{{ path('list-annonce') }}" class="btn btn-outline-light"  type="button" >Accueil</a>
+        <a href="{{ path('depot') }}" class="btn btn-outline-light" type="button">Déposer une annonce</a>
+        <a href="{{ path('category') }}" class="btn btn-outline-light" type="button">Catégorie</a>
+
+    </form>
+    {% if  app.user.username is defined %}
+    <div class=" align-content-end ">
+
+        <a class="btn btn-outline-light" href="#">{{ app.user.username }}</a>
+
+
+
+        <a class="btn btn-outline-light" href="{{ path('app_logout') }}">logout</a>
+    </div>
+        {% else %}
+           * <div class=" align-content-end ">
+            <a href="{{ path('app_register') }}" class="btn btn-outline-light" type="button">Inscription</a>
+            <a href="{{ path('app_login') }}" class="btn btn-outline-light" type="button">Se connecter</a>
+
+    </div>
+    {% endif %}
+</nav>

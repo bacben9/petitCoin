@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<div class="container-fluid  alert alert-dark">
+    <h4 >Déposer une Annonce</h4>
+</div>
+    {{ form_start(formdepot) }}
+
+    <div class="form-group">
+        <label>Titre de l'annonce *</label>
+        {{ form_widget(formdepot.titre)}}
+        </div>
+        <div class="form-group">
+            <label>Catégorie *</label>
+            <select class="form-control" id="Category"{{ form_widget(formdepot.category) }}
+
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="description">Veuillez mettre votre description *</label>
+            {{ form_widget(formdepot.description)}}
+        </div>
+        <div>
+            <label>Le prix *</label>
+            <div class="input-group mb-2">
+                <div class="input-group-prepend">
+                    {{ form_widget(formdepot.prix)}}
+                    <div class="input-group-text">€</div>
+                </div>
+
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" {{form_widget(formdepot.photo)}}>
+                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+            </div>
+            </div>
+        {{ form_widget(formdepot.submit)}}
+    {{ form_end(formdepot) }}
+
+{% endblock %}
