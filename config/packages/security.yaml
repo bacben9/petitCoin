@@ -7,8 +7,8 @@ security:
     providers:
         users:
             entity:
-                class: 'App\Entity\User'
-                property: 'email'
+                class: App\Entity\User
+                property: email
     firewalls:
 
         dev:
@@ -17,19 +17,19 @@ security:
         main:
             pattern: ^/
             anonymous: ~
+            logout: ~
             provider: users
-            switch_user: true
             form_login:
                 login_path: app_login
-                check_path: app_loginkk
+                check_path: app_login
                 csrf_token_generator: security.csrf.token_manager
-                csrf_token_id: a_private_string
+
 
             guard:
                 authenticators:
                     - App\Security\UserAuthentificatorAuthenticator
-            logout:
-                path: app_logout
+
+
                 # where to redirect after logout
                 # target: app_any_route
 
@@ -42,5 +42,6 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+          - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         # - { path: ^/admin, roles: ROLE_ADMIN }
-         - { path: ^/profile, roles: ROLE_USER }
+        # - { path: ^/profile, roles: ROLE_USER }
