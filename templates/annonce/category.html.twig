@@ -15,13 +15,11 @@
 
         </tr>
 
-        {%  for annonce in annonces %}
+        {%  for category in annonces %}
             <tr>
-                <td><img src="{{ asset('picture/' ~ annonce.photo) }}"></td>
-                <td><p><a href="{{ path('details',{'id':annonce.id}) }}">{{ annonce.titre }}</a></p>
-                    <p> Categorie: {{ annonce.category.category}}</p>
-                    <p>Prix {{ annonce.prix }}€</p>
-                    <p>{{ annonce.createdAt |date }}</p>
+
+                    <p> Categorie: {{ category.category}}</p>
+
                 </td>
             </tr>
         {% endfor %}

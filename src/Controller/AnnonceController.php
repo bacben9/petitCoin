@@ -49,11 +49,11 @@ class AnnonceController extends AbstractController
      */
     public function category(){
 
-        $rep=$this->getDoctrine()->getRepository(Annonce::class);
-        $category =$rep->findBy('');
+        $rep=$this->getDoctrine()->getRepository(Category::class);
+        $annonces =$rep->find();
         return $this->render('annonce/category.html.twig',[
             "home" => 'Le petit coin',
-            'cat' => $category
+            'annonces' => $annonces
 
         ]);
     }
