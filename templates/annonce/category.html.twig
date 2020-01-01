@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <h1 class="mt-3">Liste des Annonces</h1>
+
+
+    <div class="row mb-2 mt-2">
+        <div class="col text-right">
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <tr>
+
+        </tr>
+
+        {%  for annonce in annonces %}
+            <tr>
+                <td><img src="{{ asset('picture/' ~ annonce.photo) }}"></td>
+                <td><p><a href="{{ path('details',{'id':annonce.id}) }}">{{ annonce.titre }}</a></p>
+                    <p> Categorie: {{ annonce.category.category}}</p>
+                    <p>Prix {{ annonce.prix }}€</p>
+                    <p>{{ annonce.createdAt |date }}</p>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

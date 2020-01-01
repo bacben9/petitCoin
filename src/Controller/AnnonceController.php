@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 use App\Entity\Annonce;
+use App\Entity\Category;
 use App\Form\AnnonceType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -45,13 +47,13 @@ class AnnonceController extends AbstractController
      * @Route("/category", name="category")
      *
      */
-    public function category($id){
+    public function category(){
 
         $rep=$this->getDoctrine()->getRepository(Annonce::class);
-        $annonce=$rep->find();
-        return $this->render('annonce/details.html.twig',[
+        $category =$rep->findBy('');
+        return $this->render('annonce/category.html.twig',[
             "home" => 'Le petit coin',
-            'details' => $annonce
+            'cat' => $category
 
         ]);
     }
@@ -59,6 +61,7 @@ class AnnonceController extends AbstractController
 
     /**
      * @Route("/depot", name="depot")
+     * @IsGranted("ROLE_USER")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Exception

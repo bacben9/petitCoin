@@ -7,8 +7,8 @@ security:
     providers:
         users:
             entity:
-                class: App\Entity\User
-                property: email
+                class: 'App\Entity\User'
+                property: 'email'
     firewalls:
 
         dev:
@@ -22,12 +22,11 @@ security:
             form_login:
                 login_path: app_login
                 check_path: app_login
-                csrf_token_generator: security.csrf.token_manager
+                default_target_path: list-annonce
+                #csrf_token_generator: security.csrf.token_manager
 
 
-            guard:
-                authenticators:
-                    - App\Security\UserAuthentificatorAuthenticator
+
 
 
                 # where to redirect after logout

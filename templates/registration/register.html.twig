@@ -15,8 +15,12 @@
     {{ form_row(registrationForm.email) }}</div>
 
 <div class="mt-5">
-        {{ form_row(registrationForm.plainPassword) }}
+    {{ form_row(registrationForm.plainPassword.first) }}
 </div>
+    <div class="mt-5">
+
+        {{ form_row(registrationForm.plainPassword.second) }}
+    </div>
 <div class="mt-5">
     {{ form_row(registrationForm.submit) }}
     </div>

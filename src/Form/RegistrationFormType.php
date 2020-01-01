@@ -7,13 +7,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\IsTrue;
-use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\NotBlank;
+
 
 class RegistrationFormType extends AbstractType
 {
@@ -25,18 +24,17 @@ class RegistrationFormType extends AbstractType
             ->add('email',EmailType::class,['attr'=>['class'=>'form-control'],'label'=>'Email'])
 
 
-            ->add('plainPassword', PasswordType::class, ['attr'=>['class'=>'form-control'],'label'=>'Mot de passe',
 
-                'mapped' => false,
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez inserer un mot de passe ',]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit contenir {{ limit }} de caractéres',
-                        'max' => 4096,]),
-                ],
-            ])
+
+            ->add('plainPassword', RepeatedType::class, array(
+                'type' => PasswordType::class,
+                'first_options'  => array('attr'=>['class'=>'form-control'],'label'=>'Veuillez inserer votre mot de passe:'),
+                'second_options' => array('attr'=>['class'=>'form-control'],'label' => 'Veuillez réinsérer votre mot de passe :'),
+
+
+            ))
+
+
 
         ->add('submit',SubmitType::class,['attr'=>['class'=>'btn btn-primary'],'label'=>'Valider']);
     }

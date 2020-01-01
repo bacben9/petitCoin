@@ -1,3 +1,6 @@
+framework:
+  csrf_protection: ~
+
 
 liip_imagine:
   filter_sets:
